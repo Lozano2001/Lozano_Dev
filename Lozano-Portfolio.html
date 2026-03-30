@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tech Stack – Available for Commission</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=Syne:wght@400;700;800&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #0b0c0e;
+    --surface: #111214;
+    --border: #1e2025;
+    --accent: #c8f03c;
+    --accent2: #3cffd6;
+    --text: #e8eaf0;
+    --muted: #5a5d6b;
+    --tag-bg: #161820;
+  }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'DM Mono', monospace;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 20px;
+  }
+
+  .card {
+    width: 680px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    overflow: hidden;
+    position: relative;
+  }
+
+  /* top accent bar */
+  .card::before {
+    content: '';
+    display: block;
+    height: 3px;
+    background: linear-gradient(90deg, var(--accent) 0%, var(--accent2) 100%);
+  }
+
+  /* noise overlay */
+  .card::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+    pointer-events: none;
+    border-radius: 4px;
+  }
+
+  .inner {
+    padding: 36px 40px 40px;
+  }
+
+  /* header row */
+  .header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin-bottom: 32px;
+  }
+
+  .status-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    background: rgba(200,240,60,0.08);
+    border: 1px solid rgba(200,240,60,0.25);
+    border-radius: 2px;
+    padding: 5px 12px;
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    color: var(--accent);
+    text-transform: uppercase;
+    font-weight: 500;
+  }
+
+  .status-dot {
+    width: 6px;
+    height: 6px;
+    background: var(--accent);
+    border-radius: 50%;
+    animation: pulse 2s ease-in-out infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.5; transform: scale(0.8); }
+  }
+
+  .card-id {
+    font-size: 10px;
+    color: var(--muted);
+    letter-spacing: 0.08em;
+    padding-top: 2px;
+  }
+
+  /* title block */
+  .title-block {
+    margin-bottom: 28px;
+  }
+
+  .name {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: 32px;
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+    color: var(--text);
+    margin-bottom: 6px;
+  }
+
+  .name span {
+    color: var(--accent);
+  }
+
+  .tagline {
+    font-size: 11px;
+    color: var(--muted);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  /* divider */
+  .divider {
+    height: 1px;
+    background: var(--border);
+    margin-bottom: 28px;
+    position: relative;
+  }
+
+  .divider::before {
+    content: 'STACK';
+    position: absolute;
+    top: -8px;
+    left: 0;
+    font-size: 9px;
+    letter-spacing: 0.14em;
+    color: var(--muted);
+    background: var(--surface);
+    padding-right: 10px;
+  }
+
+  /* category rows */
+  .category {
+    margin-bottom: 20px;
+  }
+
+  .cat-label {
+    font-size: 9px;
+    letter-spacing: 0.14em;
+    color: var(--muted);
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+
+  .tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 7px;
+  }
+
+  .tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--tag-bg);
+    border: 1px solid var(--border);
+    border-radius: 2px;
+    padding: 6px 12px;
+    font-size: 11px;
+    color: var(--text);
+    letter-spacing: 0.03em;
+    transition: border-color 0.15s, color 0.15s;
+  }
+
+  .tag:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+
+  .tag .dot {
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  /* color-coded dots per category */
+  .lang .dot   { background: #3cffd6; }
+  .fw .dot     { background: #c8f03c; }
+  .db .dot     { background: #ff9f3c; }
+  .infra .dot  { background: #c87dff; }
+
+  /* footer */
+  .footer {
+    margin-top: 32px;
+    padding-top: 24px;
+    border-top: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .cta {
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 13px;
+    color: var(--bg);
+    background: var(--accent);
+    padding: 10px 22px;
+    border-radius: 2px;
+    letter-spacing: 0.04em;
+    text-decoration: none;
+    display: inline-block;
+    transition: background 0.15s;
+  }
+
+  .cta:hover { background: #d9ff4f; }
+
+  .rate-block { text-align: right; }
+
+  .rate-label {
+    font-size: 9px;
+    letter-spacing: 0.12em;
+    color: var(--muted);
+    text-transform: uppercase;
+    margin-bottom: 3px;
+  }
+
+  .rate-value {
+    font-family: 'Syne', sans-serif;
+    font-size: 20px;
+    font-weight: 800;
+    color: var(--accent2);
+    letter-spacing: -0.01em;
+  }
+
+  .rate-sub {
+    font-size: 9px;
+    color: var(--muted);
+    letter-spacing: 0.06em;
+  }
+</style>
+</head>
+<body>
+
+<div class="card">
+  <div class="inner">
+
+    <div class="header">
+      <div class="status-pill">
+        <span class="status-dot"></span>
+        Available for Commission
+      </div>
+      <div class="card-id">LOZANO.DEV · 2026</div>
+    </div>
+
+    <div class="title-block">
+      <div class="name">Full-Stack<br><span>Developer</span></div>
+      <div class="tagline">Mobile · Web · Backend · Cloud</div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- Languages -->
+    <div class="category lang">
+      <div class="cat-label">Languages</div>
+      <div class="tags">
+        <span class="tag"><span class="dot"></span>Dart</span>
+        <span class="tag"><span class="dot"></span>PHP</span>
+        <span class="tag"><span class="dot"></span>Python</span>
+        <span class="tag"><span class="dot"></span>TypeScript</span>
+        <span class="tag"><span class="dot"></span>JavaScript</span>
+      </div>
+    </div>
+
+    <!-- Frameworks -->
+    <div class="category fw">
+      <div class="cat-label">Frameworks & Platforms</div>
+      <div class="tags">
+        <span class="tag"><span class="dot"></span>Laravel</span>
+        <span class="tag"><span class="dot"></span>Flutter</span>
+        <span class="tag"><span class="dot"></span>React</span>
+        <span class="tag"><span class="dot"></span>Android Studio</span>
+      </div>
+    </div>
+
+    <!-- Databases -->
+    <div class="category db">
+      <div class="cat-label">Databases</div>
+      <div class="tags">
+        <span class="tag"><span class="dot"></span>MySQL</span>
+        <span class="tag"><span class="dot"></span>MongoDB</span>
+        <span class="tag"><span class="dot"></span>PostgreSQL</span>
+        <span class="tag"><span class="dot"></span>Firebase</span>
+      </div>
+    </div>
+
+    <!-- Infra -->
+    <div class="category infra">
+      <div class="cat-label">Infrastructure</div>
+      <div class="tags">
+        <span class="tag"><span class="dot"></span>AWS</span>
+      </div>
+    </div>
+
+    <div class="footer">
+      <a class="cta" href="#">Hire Me →</a>
+      <div class="rate-block">
+        <div class="rate-label">Open to</div>
+        <div class="rate-value">Projects</div>
+        <div class="rate-sub">Freelance · Contract · Collab</div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+</body>
+</html>
