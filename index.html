@@ -3,147 +3,445 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Tech Stack – Available for Commission</title>
-<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=Syne:wght@400;700;800&display=swap" rel="stylesheet">
+<title>Perry Lozano — Full-Stack Developer</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
 <style>
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  :root {
-    --bg: #0b0c0e; --surface: #111214; --border: #1e2025;
-    --accent: #c8f03c; --accent2: #3cffd6;
-    --text: #e8eaf0; --muted: #5a5d6b; --tag-bg: #161820;
-  }
-  body {
-    background: var(--bg); color: var(--text);
-    font-family: 'DM Mono', monospace;
-    min-height: 100vh; display: flex;
-    align-items: center; justify-content: center; padding: 40px 20px;
-  }
-  .card {
-    width: 720px; background: var(--surface);
-    border: 1px solid var(--border); border-radius: 4px; overflow: hidden;
-  }
-  .card::before {
-    content: ''; display: block; height: 3px;
-    background: linear-gradient(90deg, var(--accent) 0%, var(--accent2) 100%);
-  }
-  .inner {
-    padding: 32px 36px 36px;
-    display: grid; grid-template-columns: 140px 1fr; gap: 32px;
-  }
-  .left-col {
-    display: flex; flex-direction: column; align-items: center;
-    gap: 14px; padding-top: 4px;
-  }
-  .avatar-wrap {
-    position: relative; width: 120px; height: 120px; flex-shrink: 0;
-  }
-  .avatar-wrap::before {
-    content: ''; position: absolute; inset: -2px; border-radius: 4px;
-    background: linear-gradient(135deg, var(--accent), var(--accent2)); z-index: 0;
-  }
-  .avatar-wrap img {
-    position: relative; z-index: 1; width: 100%; height: 100%;
-    object-fit: cover; object-position: center top;
-    border-radius: 3px; display: block; filter: grayscale(15%);
-  }
-  .status-pill {
-    display: inline-flex; align-items: center; gap: 7px;
-    background: rgba(200,240,60,0.08); border: 1px solid rgba(200,240,60,0.25);
-    border-radius: 2px; padding: 5px 10px;
-    font-size: 9px; letter-spacing: 0.12em;
-    color: var(--accent); text-transform: uppercase; font-weight: 500; white-space: nowrap;
-  }
-  .status-dot {
-    width: 6px; height: 6px; background: var(--accent);
-    border-radius: 50%; animation: pulse 2s ease-in-out infinite; flex-shrink: 0;
-  }
-  @keyframes pulse {
-    0%, 100% { opacity: 1; transform: scale(1); }
-    50% { opacity: 0.5; transform: scale(0.8); }
-  }
-  .right-col { display: flex; flex-direction: column; }
-  .top-row {
-    display: flex; align-items: flex-start;
-    justify-content: space-between; margin-bottom: 18px;
-  }
-  .name {
-    font-family: 'Syne', sans-serif; font-weight: 800; font-size: 28px;
-    letter-spacing: -0.02em; line-height: 1.1; color: var(--text); margin-bottom: 4px;
-  }
-  .name span { color: var(--accent); }
-  .tagline { font-size: 10px; color: var(--muted); letter-spacing: 0.06em; text-transform: uppercase; }
-  .card-id { font-size: 9px; color: var(--muted); letter-spacing: 0.08em; padding-top: 2px; text-align: right; }
-  .divider {
-    height: 1px; background: var(--border); margin-bottom: 20px; position: relative;
-  }
-  .divider::before {
-    content: 'STACK'; position: absolute; top: -8px; left: 0;
-    font-size: 9px; letter-spacing: 0.14em; color: var(--muted);
-    background: var(--surface); padding-right: 10px;
-  }
-  .category { margin-bottom: 14px; }
-  .cat-label { font-size: 9px; letter-spacing: 0.14em; color: var(--muted); text-transform: uppercase; margin-bottom: 8px; }
-  .tags { display: flex; flex-wrap: wrap; gap: 6px; }
-  .tag {
-    display: inline-flex; align-items: center; gap: 5px;
-    background: var(--tag-bg); border: 1px solid var(--border);
-    border-radius: 2px; padding: 5px 10px; font-size: 10px;
-    color: var(--text); letter-spacing: 0.03em;
-    transition: border-color 0.15s, color 0.15s;
-  }
-  .tag:hover { border-color: var(--accent); color: var(--accent); }
-  .tag .dot { width: 5px; height: 5px; border-radius: 50%; flex-shrink: 0; }
-  .lang .dot { background: #3cffd6; }
-  .fw .dot   { background: #c8f03c; }
-  .db .dot   { background: #ff9f3c; }
-  .infra .dot { background: #c87dff; }
-  .footer {
-    margin-top: auto; padding-top: 18px;
-    border-top: 1px solid var(--border);
-    display: flex; align-items: center; justify-content: space-between;
-  }
-  .cta {
-    font-family: 'Syne', sans-serif; font-weight: 700; font-size: 12px;
-    color: var(--bg); background: var(--accent);
-    padding: 9px 20px; border-radius: 2px;
-    letter-spacing: 0.04em; text-decoration: none;
-    display: inline-block; transition: background 0.15s;
-  }
-  .cta:hover { background: #d9ff4f; }
-  .rate-block { text-align: right; }
-  .rate-label { font-size: 9px; letter-spacing: 0.12em; color: var(--muted); text-transform: uppercase; margin-bottom: 2px; }
-  .rate-value { font-family: 'Syne', sans-serif; font-size: 18px; font-weight: 800; color: var(--accent2); letter-spacing: -0.01em; }
-  .rate-sub { font-size: 9px; color: var(--muted); letter-spacing: 0.06em; }
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --bg: #080909;
+  --surface: #0e1012;
+  --surface2: #13151a;
+  --border: #1c1f27;
+  --border2: #242831;
+  --accent: #c8f03c;
+  --accent2: #3cffd6;
+  --accent3: #ff6b6b;
+  --text: #eef0f6;
+  --muted: #4a4d5c;
+  --muted2: #6b6f82;
+  --tag-bg: #0f1115;
+}
+
+html, body {
+  width: 100%; min-height: 100vh;
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'DM Mono', monospace;
+  overflow-x: hidden;
+}
+
+/* ── Noise overlay ── */
+body::before {
+  content: '';
+  position: fixed; inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+  pointer-events: none; z-index: 0; opacity: 0.4;
+}
+
+/* ── Grid lines bg ── */
+body::after {
+  content: '';
+  position: fixed; inset: 0;
+  background-image:
+    linear-gradient(rgba(200,240,60,0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(200,240,60,0.03) 1px, transparent 1px);
+  background-size: 60px 60px;
+  pointer-events: none; z-index: 0;
+}
+
+.page {
+  position: relative; z-index: 1;
+  max-width: 1100px; margin: 0 auto;
+  padding: 40px 24px 80px;
+}
+
+/* ── HERO ── */
+.hero {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 40px;
+  align-items: start;
+  padding: 56px 0 48px;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 56px;
+  animation: fadeUp 0.6s ease both;
+}
+
+.hero-left { display: flex; flex-direction: column; gap: 20px; }
+
+.badge {
+  display: inline-flex; align-items: center; gap: 8px;
+  border: 1px solid rgba(200,240,60,0.3);
+  background: rgba(200,240,60,0.06);
+  padding: 6px 14px; border-radius: 2px;
+  width: fit-content;
+  font-size: 10px; letter-spacing: 0.15em; color: var(--accent); text-transform: uppercase;
+}
+.badge-dot {
+  width: 6px; height: 6px; background: var(--accent); border-radius: 50%;
+  animation: blink 2s ease-in-out infinite;
+}
+@keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.3} }
+
+h1 {
+  font-family: 'Syne', sans-serif;
+  font-size: clamp(52px, 8vw, 96px);
+  font-weight: 800;
+  line-height: 0.92;
+  letter-spacing: -0.03em;
+  color: var(--text);
+}
+h1 .accent { color: var(--accent); }
+h1 .accent2 { color: var(--accent2); }
+
+.tagline {
+  font-size: 11px; letter-spacing: 0.12em; color: var(--muted2); text-transform: uppercase;
+  display: flex; align-items: center; gap: 12px;
+}
+.tagline::before {
+  content: '';
+  display: inline-block; width: 32px; height: 1px; background: var(--muted);
+}
+
+.hero-meta {
+  display: flex; flex-direction: column; align-items: flex-end;
+  gap: 16px; padding-top: 8px;
+}
+
+.avatar-wrap {
+  position: relative; width: 130px; height: 130px; flex-shrink: 0;
+}
+.avatar-wrap::before {
+  content: ''; position: absolute; inset: -2px; border-radius: 4px;
+  background: linear-gradient(135deg, var(--accent), var(--accent2)); z-index: 0;
+}
+.avatar-wrap::after {
+  content: ''; position: absolute; inset: 4px; border-radius: 3px;
+  border: 1px solid rgba(200,240,60,0.2); z-index: 2; pointer-events: none;
+}
+.avatar-wrap img {
+  position: relative; z-index: 1; width: 100%; height: 100%;
+  object-fit: cover; object-position: center top;
+  border-radius: 3px; display: block;
+  filter: grayscale(20%) contrast(1.05);
+}
+
+.hero-id {
+  font-size: 9px; color: var(--muted); letter-spacing: 0.1em; text-align: right;
+  line-height: 1.7;
+}
+
+/* ── SECTIONS HEADER ── */
+.section-label {
+  display: flex; align-items: center; gap: 12px;
+  font-size: 9px; letter-spacing: 0.18em; color: var(--muted); text-transform: uppercase;
+  margin-bottom: 24px;
+}
+.section-label::after {
+  content: ''; flex: 1; height: 1px; background: var(--border);
+}
+
+/* ── STACK GRID ── */
+.stack-section { margin-bottom: 56px; animation: fadeUp 0.6s 0.1s ease both; }
+
+.stack-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+}
+@media(max-width: 700px){ .stack-grid { grid-template-columns: repeat(2,1fr); } }
+
+.stack-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 3px;
+  padding: 20px 18px;
+  transition: border-color 0.2s, transform 0.2s;
+  position: relative; overflow: hidden;
+}
+.stack-card::before {
+  content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 2px;
+  background: linear-gradient(90deg, var(--cat-color, var(--accent)), transparent);
+  opacity: 0; transition: opacity 0.2s;
+}
+.stack-card:hover { border-color: var(--border2); transform: translateY(-2px); }
+.stack-card:hover::before { opacity: 1; }
+
+.cat-head {
+  display: flex; align-items: center; gap: 8px;
+  margin-bottom: 14px;
+}
+.cat-icon {
+  width: 28px; height: 28px;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid var(--border);
+  border-radius: 2px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 14px;
+}
+.cat-title {
+  font-size: 9px; letter-spacing: 0.14em; color: var(--muted2); text-transform: uppercase;
+}
+
+.tag-list { display: flex; flex-wrap: wrap; gap: 6px; }
+.tag {
+  display: inline-flex; align-items: center; gap: 5px;
+  background: var(--tag-bg); border: 1px solid var(--border);
+  border-radius: 2px; padding: 5px 9px; font-size: 10px;
+  color: var(--muted2); letter-spacing: 0.02em;
+  transition: border-color 0.15s, color 0.15s;
+}
+.tag:hover { border-color: var(--cat-color, var(--accent)); color: var(--text); }
+.tag .dot { width: 4px; height: 4px; border-radius: 50%; background: var(--cat-color, var(--accent)); flex-shrink: 0; }
+
+/* ── SERVICES ── */
+.services-section { margin-bottom: 56px; animation: fadeUp 0.6s 0.15s ease both; }
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+@media(max-width:700px){ .services-grid { grid-template-columns: 1fr; } }
+
+.service-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 3px;
+  padding: 24px 22px;
+  transition: border-color 0.2s, transform 0.2s;
+}
+.service-card:hover { border-color: var(--border2); transform: translateY(-2px); }
+
+.service-icon {
+  font-size: 24px; margin-bottom: 14px; display: block;
+}
+.service-title {
+  font-family: 'Syne', sans-serif; font-weight: 700; font-size: 15px;
+  color: var(--text); margin-bottom: 8px; letter-spacing: -0.01em;
+}
+.service-desc {
+  font-size: 10px; color: var(--muted2); line-height: 1.7; letter-spacing: 0.02em;
+}
+
+/* ── PROJECTS ── */
+.projects-section { margin-bottom: 56px; animation: fadeUp 0.6s 0.2s ease both; }
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}
+@media(max-width:700px){ .projects-grid { grid-template-columns: 1fr; } }
+
+.project-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 3px;
+  padding: 26px 24px;
+  position: relative; overflow: hidden;
+  transition: border-color 0.2s, transform 0.2s;
+  cursor: default;
+}
+.project-card::after {
+  content: ''; position: absolute; top: 0; right: 0;
+  width: 100px; height: 100px;
+  background: radial-gradient(circle at top right, var(--project-color, rgba(200,240,60,0.08)), transparent 70%);
+  pointer-events: none;
+}
+.project-card:hover { border-color: var(--border2); transform: translateY(-3px); }
+
+.project-header {
+  display: flex; align-items: flex-start; justify-content: space-between;
+  margin-bottom: 12px;
+}
+.project-num {
+  font-size: 9px; letter-spacing: 0.1em; color: var(--muted);
+}
+.project-status {
+  font-size: 9px; letter-spacing: 0.1em;
+  padding: 3px 8px; border-radius: 2px;
+  border: 1px solid; text-transform: uppercase;
+}
+.status-live { color: var(--accent2); border-color: rgba(60,255,214,0.3); background: rgba(60,255,214,0.06); }
+.status-built { color: var(--accent); border-color: rgba(200,240,60,0.3); background: rgba(200,240,60,0.06); }
+.status-concept { color: var(--muted2); border-color: var(--border); }
+
+.project-icon { font-size: 28px; margin-bottom: 10px; display: block; }
+.project-title {
+  font-family: 'Syne', sans-serif; font-weight: 700; font-size: 17px;
+  color: var(--text); margin-bottom: 8px; letter-spacing: -0.01em;
+}
+.project-desc {
+  font-size: 10px; color: var(--muted2); line-height: 1.75; margin-bottom: 16px;
+}
+.project-tags { display: flex; flex-wrap: wrap; gap: 5px; }
+.project-tag {
+  font-size: 9px; letter-spacing: 0.08em; color: var(--muted2);
+  border: 1px solid var(--border); border-radius: 2px; padding: 3px 8px;
+  text-transform: uppercase;
+}
+
+/* ── COMMISSION BANNER ── */
+.commission-section { animation: fadeUp 0.6s 0.25s ease both; }
+
+.commission-banner {
+  background: var(--surface2);
+  border: 1px solid var(--border2);
+  border-radius: 3px;
+  padding: 40px 36px;
+  display: flex; align-items: center; justify-content: space-between; gap: 32px;
+  position: relative; overflow: hidden;
+}
+.commission-banner::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+  background: linear-gradient(90deg, var(--accent), var(--accent2));
+}
+.commission-banner::after {
+  content: ''; position: absolute; inset: 0;
+  background: radial-gradient(ellipse at right center, rgba(60,255,214,0.06), transparent 60%);
+  pointer-events: none;
+}
+
+.commission-left { position: relative; z-index: 1; }
+.commission-eyebrow {
+  font-size: 9px; letter-spacing: 0.18em; color: var(--muted2); text-transform: uppercase;
+  margin-bottom: 10px;
+}
+.commission-title {
+  font-family: 'Syne', sans-serif; font-weight: 800;
+  font-size: clamp(28px, 4vw, 42px); line-height: 1.0;
+  letter-spacing: -0.02em; color: var(--text);
+  margin-bottom: 12px;
+}
+.commission-title .hi { color: var(--accent2); }
+.commission-sub {
+  font-size: 10px; color: var(--muted2); letter-spacing: 0.04em; line-height: 1.7;
+  max-width: 420px;
+}
+
+.commission-right {
+  display: flex; flex-direction: column; align-items: flex-end; gap: 16px;
+  flex-shrink: 0; position: relative; z-index: 1;
+}
+.open-label {
+  font-size: 9px; letter-spacing: 0.14em; color: var(--muted2); text-transform: uppercase;
+}
+.open-value {
+  font-family: 'Syne', sans-serif; font-size: 22px; font-weight: 800;
+  color: var(--accent2); letter-spacing: -0.01em; text-align: right; line-height: 1.1;
+}
+.open-types {
+  display: flex; flex-direction: column; align-items: flex-end; gap: 4px;
+}
+.open-type {
+  display: flex; align-items: center; gap: 7px;
+  font-size: 10px; color: var(--muted2); letter-spacing: 0.04em;
+}
+.open-type::before {
+  content: ''; width: 4px; height: 4px; border-radius: 50%; background: var(--accent);
+}
+
+@media(max-width:700px){
+  .commission-banner { flex-direction: column; align-items: flex-start; }
+  .commission-right { align-items: flex-start; }
+}
+
+/* ── CONTACT ── */
+.contact-section { margin-bottom: 56px; animation: fadeUp 0.6s 0.28s ease both; }
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+}
+@media(max-width:700px){ .contact-grid { grid-template-columns: repeat(2,1fr); } }
+
+.contact-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 3px;
+  padding: 22px 20px;
+  display: flex; flex-direction: column; gap: 8px;
+  transition: border-color 0.2s, transform 0.2s;
+}
+.contact-card:hover { border-color: var(--accent2); transform: translateY(-2px); }
+
+.contact-icon { font-size: 20px; }
+.contact-label {
+  font-size: 9px; letter-spacing: 0.14em; color: var(--muted2); text-transform: uppercase;
+}
+.contact-value {
+  font-family: 'Syne', sans-serif; font-weight: 600;
+  font-size: 13px; color: var(--text); letter-spacing: -0.01em;
+  word-break: break-all; line-height: 1.4;
+}
+.contact-link {
+  text-decoration: none; color: var(--accent2);
+  transition: color 0.15s;
+}
+.contact-link:hover { color: var(--accent); }
+
+/* ── FOOTER ── */
+.footer {
+  margin-top: 56px; padding-top: 24px;
+  border-top: 1px solid var(--border);
+  display: flex; align-items: center; justify-content: space-between;
+  animation: fadeUp 0.6s 0.3s ease both;
+}
+.footer-left { font-size: 9px; color: var(--muted); letter-spacing: 0.08em; }
+.footer-right { display: flex; gap: 20px; }
+.footer-link {
+  font-size: 9px; letter-spacing: 0.1em; color: var(--muted2);
+  text-transform: uppercase; text-decoration: none;
+  transition: color 0.15s;
+}
+.footer-link:hover { color: var(--accent); }
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
 </style>
 </head>
 <body>
-<div class="card">
-  <div class="inner">
-    <!-- LEFT: Photo -->
-    <div class="left-col">
+<div class="page">
+
+  <!-- ── HERO ── -->
+  <section class="hero">
+    <div class="hero-left">
+      <div class="badge">
+        <span class="badge-dot"></span>
+        Open for Commissions
+      </div>
+      <h1>
+        Perry<br>
+        <span class="accent">Lozano</span><span class="accent2">.</span>
+      </h1>
+      <div class="tagline">Full-Stack Developer · Mobile · Web · Cloud</div>
+    </div>
+    <div class="hero-meta">
       <div class="avatar-wrap">
         <img src="perry.jpg" alt="Perry Lozano">
       </div>
-      <div class="status-pill">
-        <span class="status-dot"></span>For Hire
+      <div class="hero-id">
+        LOZANO.DEV<br>
+        EST. 2026
       </div>
     </div>
+  </section>
 
-    <!-- RIGHT: Info + Stack -->
-    <div class="right-col">
-      <div class="top-row">
-        <div>
-          <div class="name">Full-Stack<br><span>Developer</span></div>
-          <div class="tagline">Mobile · Web · Backend · Cloud</div>
+  <!-- ── TECH STACK ── -->
+  <section class="stack-section">
+    <div class="section-label">Tech Stack</div>
+    <div class="stack-grid">
+
+      <div class="stack-card" style="--cat-color:#3cffd6;">
+        <div class="cat-head">
+          <div class="cat-icon">⌨️</div>
+          <div class="cat-title">Languages</div>
         </div>
-        <div class="card-id">LOZANO.DEV · 2026</div>
-      </div>
-
-      <div class="divider"></div>
-
-      <div class="category lang">
-        <div class="cat-label">Languages</div>
-        <div class="tags">
+        <div class="tag-list" style="--cat-color:#3cffd6;">
           <span class="tag"><span class="dot"></span>Dart</span>
           <span class="tag"><span class="dot"></span>PHP</span>
           <span class="tag"><span class="dot"></span>Python</span>
@@ -152,9 +450,12 @@
         </div>
       </div>
 
-      <div class="category fw">
-        <div class="cat-label">Frameworks & Platforms</div>
-        <div class="tags">
+      <div class="stack-card" style="--cat-color:#c8f03c;">
+        <div class="cat-head">
+          <div class="cat-icon">🧩</div>
+          <div class="cat-title">Frameworks</div>
+        </div>
+        <div class="tag-list" style="--cat-color:#c8f03c;">
           <span class="tag"><span class="dot"></span>Laravel</span>
           <span class="tag"><span class="dot"></span>Flutter</span>
           <span class="tag"><span class="dot"></span>React</span>
@@ -162,9 +463,12 @@
         </div>
       </div>
 
-      <div class="category db">
-        <div class="cat-label">Databases</div>
-        <div class="tags">
+      <div class="stack-card" style="--cat-color:#ff9f3c;">
+        <div class="cat-head">
+          <div class="cat-icon">🗄️</div>
+          <div class="cat-title">Databases</div>
+        </div>
+        <div class="tag-list" style="--cat-color:#ff9f3c;">
           <span class="tag"><span class="dot"></span>MySQL</span>
           <span class="tag"><span class="dot"></span>MongoDB</span>
           <span class="tag"><span class="dot"></span>PostgreSQL</span>
@@ -172,23 +476,212 @@
         </div>
       </div>
 
-      <div class="category infra">
-        <div class="cat-label">Infrastructure</div>
-        <div class="tags">
+      <div class="stack-card" style="--cat-color:#c87dff;">
+        <div class="cat-head">
+          <div class="cat-icon">☁️</div>
+          <div class="cat-title">Infrastructure</div>
+        </div>
+        <div class="tag-list" style="--cat-color:#c87dff;">
           <span class="tag"><span class="dot"></span>AWS</span>
+          <span class="tag"><span class="dot"></span>Firebase</span>
+          <span class="tag"><span class="dot"></span>Git / GitHub</span>
+          <span class="tag"><span class="dot"></span>REST APIs</span>
         </div>
       </div>
 
-      <div class="footer">
+    </div>
+  </section>
 
-        <div class="rate-block">
-          <div class="rate-label">Open to</div>
-          <div class="rate-value">Projects</div>
-          <div class="rate-sub">Freelance · Contract · Collab</div>
+  <!-- ── SERVICES ── -->
+  <section class="services-section">
+    <div class="section-label">What I Build</div>
+    <div class="services-grid">
+
+      <div class="service-card">
+        <span class="service-icon">📱</span>
+        <div class="service-title">Mobile Apps</div>
+        <div class="service-desc">Cross-platform iOS & Android apps built with Flutter and Dart. Clean UI, native feel, real performance.</div>
+      </div>
+
+      <div class="service-card">
+        <span class="service-icon">🌐</span>
+        <div class="service-title">Web Applications</div>
+        <div class="service-desc">Full-featured web apps with React frontends and Laravel or Node backends. Fast, secure, scalable.</div>
+      </div>
+
+      <div class="service-card">
+        <span class="service-icon">🔌</span>
+        <div class="service-title">APIs & Backend</div>
+        <div class="service-desc">RESTful APIs, database design, server-side logic, and cloud deployments on AWS or Firebase.</div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ── PROJECTS ── -->
+  <section class="projects-section">
+    <div class="section-label">Sample Projects</div>
+    <div class="projects-grid">
+
+      <div class="project-card" style="--project-color: rgba(200,240,60,0.08);">
+        <div class="project-header">
+          <span class="project-num">01</span>
+          <span class="project-status status-built">Built</span>
+        </div>
+        <span class="project-icon">🛒</span>
+        <div class="project-title">E-Commerce Platform</div>
+        <div class="project-desc">Full-featured online store with product catalog, cart, checkout flow, payment gateway integration, order tracking, and admin dashboard for inventory management.</div>
+        <div class="project-tags">
+          <span class="project-tag">Laravel</span>
+          <span class="project-tag">React</span>
+          <span class="project-tag">MySQL</span>
+          <span class="project-tag">Stripe API</span>
+        </div>
+      </div>
+
+      <div class="project-card" style="--project-color: rgba(60,255,214,0.08);">
+        <div class="project-header">
+          <span class="project-num">02</span>
+          <span class="project-status status-built">Built</span>
+        </div>
+        <span class="project-icon">👥</span>
+        <div class="project-title">HRIS System</div>
+        <div class="project-desc">Human Resource Information System covering employee records, payroll computation, leave management, attendance tracking, and performance evaluation modules.</div>
+        <div class="project-tags">
+          <span class="project-tag">Laravel</span>
+          <span class="project-tag">Vue.js</span>
+          <span class="project-tag">PostgreSQL</span>
+          <span class="project-tag">AWS</span>
+        </div>
+      </div>
+
+      <div class="project-card" style="--project-color: rgba(255,107,107,0.08);">
+        <div class="project-header">
+          <span class="project-num">03</span>
+          <span class="project-status status-live">Live</span>
+        </div>
+        <span class="project-icon">📦</span>
+        <div class="project-title">Inventory & POS</div>
+        <div class="project-desc">Point-of-sale system with real-time inventory tracking, barcode scanning, sales reports, supplier management, and low-stock alerts for retail businesses.</div>
+        <div class="project-tags">
+          <span class="project-tag">Flutter</span>
+          <span class="project-tag">Firebase</span>
+          <span class="project-tag">Python</span>
+        </div>
+      </div>
+
+      <div class="project-card" style="--project-color: rgba(200,125,255,0.08);">
+        <div class="project-header">
+          <span class="project-num">04</span>
+          <span class="project-status status-built">Built</span>
+        </div>
+        <span class="project-icon">📅</span>
+        <div class="project-title">Booking & Scheduling App</div>
+        <div class="project-desc">Appointment booking platform for service businesses. Supports multi-staff scheduling, calendar sync, automated reminders, and client self-booking portal.</div>
+        <div class="project-tags">
+          <span class="project-tag">React</span>
+          <span class="project-tag">Node.js</span>
+          <span class="project-tag">MongoDB</span>
+          <span class="project-tag">Twilio</span>
+        </div>
+      </div>
+
+      <div class="project-card" style="--project-color: rgba(200,240,60,0.06);">
+        <div class="project-header">
+          <span class="project-num">05</span>
+          <span class="project-status status-live">Live</span>
+        </div>
+        <span class="project-icon">🏥</span>
+        <div class="project-title">Clinic Management System</div>
+        <div class="project-desc">Patient records, appointment queuing, prescription management, billing, and doctor dashboard. Designed for small to mid-sized clinics and medical practices.</div>
+        <div class="project-tags">
+          <span class="project-tag">Laravel</span>
+          <span class="project-tag">Flutter</span>
+          <span class="project-tag">MySQL</span>
+        </div>
+      </div>
+
+      <div class="project-card" style="--project-color: rgba(60,255,214,0.06);">
+        <div class="project-header">
+          <span class="project-num">06</span>
+          <span class="project-status status-concept">Concept</span>
+        </div>
+        <span class="project-icon">🎓</span>
+        <div class="project-title">LMS / School Portal</div>
+        <div class="project-desc">Learning management platform with course builder, student enrollment, grade tracking, quizzes, file submissions, and parent/guardian portal access.</div>
+        <div class="project-tags">
+          <span class="project-tag">React</span>
+          <span class="project-tag">Laravel</span>
+          <span class="project-tag">PostgreSQL</span>
+          <span class="project-tag">AWS S3</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ── COMMISSION BANNER ── -->
+  <section class="commission-section">
+    <div class="commission-banner">
+      <div class="commission-left">
+        <div class="commission-eyebrow">💬 Let's Build Something</div>
+        <div class="commission-title">Open for<br><span class="hi">Commissions</span></div>
+        <div class="commission-sub">Have a project in mind? Whether it's an MVP, a complete system, or just an idea on paper — let's talk. I take on freelance work, contracts, and long-term collaborations.</div>
+      </div>
+      <div class="commission-right">
+        <div class="open-label">Currently accepting</div>
+        <div class="open-value">New<br>Projects</div>
+        <div class="open-types">
+          <div class="open-type">Freelance Work</div>
+          <div class="open-type">Contract Projects</div>
+          <div class="open-type">Long-term Collaborations</div>
         </div>
       </div>
     </div>
-  </div>
+  </section>
+
+  <!-- ── CONTACT ── -->
+  <section class="contact-section">
+    <div class="section-label">Get In Touch</div>
+    <div class="contact-grid">
+
+      <div class="contact-card">
+        <div class="contact-icon">👤</div>
+        <div class="contact-label">Full Name</div>
+        <div class="contact-value">Perry Philip J. Lozano</div>
+      </div>
+
+      <div class="contact-card">
+        <div class="contact-icon">✉️</div>
+        <div class="contact-label">Email</div>
+        <a class="contact-value contact-link" href="mailto:lozanodev2001@gmail.com">lozanodev2001@gmail.com</a>
+      </div>
+
+      <div class="contact-card">
+        <div class="contact-icon">📞</div>
+        <div class="contact-label">Contact Number</div>
+        <a class="contact-value contact-link" href="tel:+639674664117">0967 466 4117</a>
+      </div>
+
+      <div class="contact-card">
+        <div class="contact-icon">🔵</div>
+        <div class="contact-label">Facebook</div>
+        <a class="contact-value contact-link" href="https://facebook.com/search/top?q=Perry+Philip+J.+Lozano" target="_blank">Perry Philip J. Lozano</a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ── FOOTER ── -->
+  <footer class="footer">
+    <div class="footer-left">© 2026 · Perry Philip J. Lozano · Full-Stack Developer</div>
+    <div class="footer-right">
+      <a class="footer-link" href="mailto:lozanodev2001@gmail.com">Email</a>
+      <a class="footer-link" href="tel:+639674664117">Call</a>
+      <a class="footer-link" href="https://facebook.com/search/top?q=Perry+Philip+J.+Lozano" target="_blank">Facebook</a>
+    </div>
+  </footer>
+
 </div>
 </body>
 </html>
